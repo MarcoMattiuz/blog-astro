@@ -1,0 +1,31 @@
+---
+import ListPost from "./ListPost.astro";
+const allPosts = await Astro.glob('../pages/posts/*.md');
+---
+
+<div class="posts-list">
+    {allPosts.map((post) => <ListPost url={post.url} 
+                                    title={post.frontmatter.title} 
+                                    description={post.frontmatter.description} 
+                                    pubDate={post.frontmatter.pubDate} />)}
+</div>
+
+<style>
+    .posts-list{
+        width: 50%;
+        height: 100%;
+        display: flex;
+        justify-content: left;
+        flex-flow: column;
+        padding: 0.5rem;
+        overflow-y: auto;
+
+      
+        /* clip-path: inset(0 0 -2000px 0); */
+
+    }
+
+    .posts-list::-webkit-scrollbar {
+    display: none; /* Nasconde la barra di scorrimento */
+    }
+</style>

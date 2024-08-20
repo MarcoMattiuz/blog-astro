@@ -1,0 +1,49 @@
+---
+
+const {url, title ,description, pubDate} = Astro.props;
+---
+<div class="list-post">
+    <a href={url}><span> ▶  </span>{title}</a>
+    <p>{pubDate.toString().slice(0,10)}</p>
+    <p>{description.slice(0,30)}...</p>
+</div>
+
+<style>
+
+    p{
+        margin: 0.4rem ;
+    }
+
+    .list-post{
+        background: transparent;
+        width: 90%;
+        margin-bottom: 1rem;
+        padding: 0.5rem;
+        cursor: pointer;
+        box-shadow: 0 0 30px 2px var(--shadow-color);
+        border: 0.2rem solid var(--border-color);
+        z-index: 10;
+    }
+
+
+    .list-post:hover{
+        background:black;
+        width: 90%;
+        margin-bottom: 1rem;
+        padding: 0.5rem;
+        scale: 102%;
+    }
+  
+
+    a{
+        cursor: default;
+    pointer-events: none; 
+        text-decoration: none; /* Rimuove la sottolineatura */
+    color: inherit; /* Imposta il colore del testo ereditato dal genitore */
+    background: none; /* Rimuove qualsiasi background */
+    padding: 0; /* Rimuove qualsiasi padding */
+    margin: 0; /* Rimuove qualsiasi margine */
+    border: none; /* Rimuove qualsiasi bordo */
+    outline: none; 
+    }
+</style>
