@@ -8,7 +8,7 @@ tags: ["personal"]
 ---
 Actually I'm preparing for an exam I have in a bit.<br>
 The exam is functional programming, really interesting stuff<br>
-preatty usefull to understand also ho to use Astro <br>
+pretty usefull to understand also ho to use Astro <br>
 and lambda functions and other things in javascript.
 <br> <br>
 What I thing today:<br>
