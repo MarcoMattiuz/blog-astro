@@ -5,11 +5,19 @@ const { frontmatter } = Astro.props;
 
 <BaseLayout title = {frontmatter.title}>
 <h1>{frontmatter.title}</h1>
-<p>{frontmatter.pubDate.toString().slice(0,10)}</p>
+<h3 >{frontmatter.description}</h5>
+<p>publication date: {frontmatter.pubDate.toString().slice(0,10)}</p>
+
+<slot />
 </BaseLayout>
 
 <style>
     body{
         flex-flow: column;
     }
+    p,h1,h2,h3,h4,h5,h6{
+        margin-bottom: 2rem;
+    }
+
+
 </style>
