@@ -1,12 +1,15 @@
 ---
 
 const {url, title ,description, pubDate} = Astro.props;
+
+
+
 ---
-<div class="list-post">
-    <a href={url}><span> ▶  </span>{title}</a>
+<a href={url} class="list-post">
+   <h4> <span> ▶  </span>{title} </h4>
     <p>{pubDate.toString().slice(0,10)}</p>
     <p>{description.slice(0,30)}...</p>
-</div>
+</a>
 
 <style>
 
@@ -19,7 +22,6 @@ const {url, title ,description, pubDate} = Astro.props;
         width: 90%;
         margin-bottom: 1rem;
         padding: 0.5rem;
-        cursor: pointer;
         box-shadow: 0 0 30px 2px var(--shadow-color);
         border: 0.2rem solid var(--border-color);
         z-index: 10;
@@ -37,8 +39,8 @@ const {url, title ,description, pubDate} = Astro.props;
   
 
     a{
-        cursor: default;
-    pointer-events: none; 
+        cursor: pointer;
+    /* pointer-events: none;  */
         text-decoration: none; /* Rimuove la sottolineatura */
     color: inherit; /* Imposta il colore del testo ereditato dal genitore */
     background: none; /* Rimuove qualsiasi background */
@@ -48,3 +50,4 @@ const {url, title ,description, pubDate} = Astro.props;
     outline: none; 
     }
 </style>
+
