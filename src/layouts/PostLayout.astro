@@ -2,24 +2,123 @@
 import BaseLayout from "./BaseLayout.astro";
 const { frontmatter } = Astro.props;
 import Header from "../components/Header.astro"
+import { db, Comment } from 'astro:db';
+import CommentComponent from "../components/CommentComponent.astro";
+
+
+
+
+if (Astro.request.method === 'POST') {
+  // parse form data
+  const formData = await Astro.request.formData();
+  const author = formData.get('author');
+  const body = formData.get('content');
+  if (typeof author === 'string' && typeof body === 'string') {
+    // insert form data into the Comment table
+    await db.insert(Comment).values({ author, body });
+  }
+}
+
+const comments = await db.select().from(Comment);
 ---
 
-<BaseLayout title = {frontmatter.title}>
+<BaseLayout class="base-layout" title = {frontmatter.title}>
+    <div class="container-post">
     <Header />
-<h1>{frontmatter.title}</h1>
-<h3 >{frontmatter.description}</h5>
-<p>publication date: {frontmatter.pubDate.toString().slice(0,10)}</p>
+    <div id="L">
+        <h1>{frontmatter.title}</h1>
+        <h3 >{frontmatter.description}</h5>
+        <p>publication date: {frontmatter.pubDate.toString().slice(0,10)}</p>
+            <!-- **body heare -->
+        <slot />
+    </div>
+    <div id="R">
+       
+        <form method="POST" class="form">
+            <h4>Add a comment!</h4>
+            <label for="author" style="margin-top: 1rem;"><h5>name:</h5></label>
+            <input id="author" name="author" />
+            <label for="content" style="margin-top: 1rem;"><h5>content:</h5></label>
+            <textarea style="max-width: 30rem; max-height: 10rem;" id="content" name="content"></textarea>
 
-<slot />
+            <button type="submit" class="btn">Add </button>
+          </form>
+          <h4 style="margin-top: 0.5rem;">comments:</h4>
+          <div class="comments-list">
+            
+            {
+                comments.map(({ author, body }) => (
+                  <CommentComponent author={author} body={body} />
+                ))
+              } 
+          </div>
+    </div>
+</div>
+
 </BaseLayout>
 
 <style>
-    body{
-        flex-flow: column;
+    .container-post{
+        width: 100vw;
+        height: 100vh;
+        padding-top: 5rem;
+        display: flex;
+        flex-flow: row;  
+        align-items: center;   
+    }
+
+    @media screen and (max-width: 700px) {
+        .container-post{
+        flex-flow: column;     
+        }
     }
     p,h1,h2,h3,h4,h5,h6{
-        margin-bottom: 2rem;
+        /* margin-bottom: 2rem; */
+        text-align: center;
     }
+    #L{
+        width: 50vw;
+        height: 70vh;
+        margin: 3rem;
+        /* padding: 2rem; */
+        display: flex;
+        align-items: center;
+        flex-flow: column;
+        justify-content: space-around;
+        border: 0.1rem solid #00FF00;
+      
+    }
+    #R{
+        /* background: rebeccapurple; */
+        position: relative;
+        width: 50vw;
+        height: 70vh;
+        margin: 3rem;
+        display: flex;
+     
+        flex-flow: column; 
+       
+        
+      
+    }
+    .comments-list{
+        overflow-y:scroll;
+        overflow-x: hidden;
+        box-sizing: border-box;
+        width: 100%;
+        height: 50%;
+    }
+    .form{
+        margin-top: 0;
+       display: flex;
+       flex-flow: column;
+       align-items: center;
+       border: 0.1rem solid #00FF00;
+       width: 88%;
+       height: 50%;
+       padding: 1rem;
+    }
+ 
 
 
 </style>

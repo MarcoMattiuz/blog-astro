@@ -1,0 +1,23 @@
+---
+
+const {author,body} = Astro.props;
+---
+<div class="comment">
+    <h5>author: {author}</h5>
+    <span>
+        <h5>text: </h5>
+        <p style="text-align: center; ">{body}</p>
+    </span>
+    
+</div>
+
+
+<style>
+    .comment{
+        width: 90%;
+        border: 0.1rem solid #00FF00;
+        height: fit-content;
+        padding: 0.5rem;
+        margin-top: 0.5rem;
+    }
+</style>

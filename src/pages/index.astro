@@ -2,6 +2,21 @@
 import BaseLayout from "../layouts/BaseLayout.astro"
 import PostsList from "../components/PostsList.astro"
 
+
+
+// if (Astro.request.method === 'POST') {
+//   // parse form data
+//   const formData = await Astro.request.formData();
+//   const author = formData.get('author');
+//   const likes = formData.get('likes');
+//   const body = formData.get('content');
+//   if (typeof author === 'string' && typeof body === 'string') {
+//     // insert form data into the Comment table
+//     await db.insert(Comment).values({ author,likes, body });
+//   }
+// }
+
+
 ---
 
 <BaseLayout title="marco-mattiuz">
@@ -15,7 +30,26 @@ import PostsList from "../components/PostsList.astro"
 					<h1>I'm Marco Mattiuz</h1>
 					<p>I may be a robot (not sure yet)</p>
 
-					
+					<!-- <form method="POST" style="display: grid">
+						<label for="author">Author</label>
+						<input id="author" name="author" />
+						<label for="likes">Likes</label>
+						<input type="number" name="likes" id="likes">
+						<label for="content">Content</label>
+						<textarea id="content" name="content"></textarea>
+
+						<button type="submit">Submit</button>
+					  </form>
+					   -->
+					  <!-- {
+						comments.map(({ author,likes, body }) => (
+						  <article>
+							<p>Author: {author}</p>
+							<p>likes: {likes}</p>
+							<p>{body}</p>
+						  </article>
+						))
+					  } -->
 			</div>
 		</div>
 	</div>

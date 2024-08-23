@@ -27,6 +27,46 @@ body{
     overflow: hidden;
 }
 
+/* Applicare a tutti gli input, textarea e button */
+input, textarea, button {
+    background-color: #000; /* Sfondo nero */
+    color: #00FF00; /* Testo verde */
+    border: 2px solid #00FF00; /* Bordo verde */
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer; /* Cambia il cursore su hover */
+}
+
+/* Cambiare colore del placeholder */
+input::placeholder, textarea::placeholder {
+    color: #00FF00; /* Placeholder verde */
+}
+
+/* Cambiare colore del testo su focus */
+input:focus, textarea:focus, button:focus {
+    outline: none; /* Rimuove il contorno di default */
+    box-shadow: 0 0 8px rgba(0, 255, 0, 0.6); /* Aggiunge un'ombra verde */
+}
+
+/* Cambiare lo stile del bottone su hover */
+button:hover, input[type="submit"]:hover {
+    background-color: #00FF00; /* Sfondo verde */
+    color: #000; /* Testo nero */
+}
+
+/* Cambiare lo stile del bottone su click */
+button:active, input[type="submit"]:active {
+    background-color: #00cc00; /* Verde leggermente più scuro */
+    color: #000; /* Testo nero */
+    box-shadow: 0 0 8px rgba(0, 255, 0, 0.8); /* Aumenta l'ombra verde */
+}
+
+    *::-webkit-scrollbar {
+    display: none; /* Nasconde la barra di scorrimento */
+    }
+
+
 .main-container{
     position: absolute;
     background: transparent;
