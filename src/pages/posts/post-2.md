@@ -5,6 +5,7 @@ pubDate: 2024-08-21
 description: 'Today I am catching up on some Uni work I have to do'
 author: 'MarcoMattiuz'
 tags: ["personal"]
+id: '2'
 ---
 Actually I'm preparing for an exam I have in a bit.<br>
 The exam is functional programming, really interesting stuff<br>

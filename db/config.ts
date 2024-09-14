@@ -6,6 +6,7 @@ const Comment = defineTable({
   columns: {
     author: column.text(),
     // likes: column.number(),
+    postID: column.text(),
     body: column.text(),
   }
 })

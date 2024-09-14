@@ -12,10 +12,11 @@ if (Astro.request.method === 'POST') {
   // parse form data
   const formData = await Astro.request.formData();
   const author = formData.get('author');
+  const postID = frontmatter.id;
   const body = formData.get('content');
   if (typeof author === 'string' && typeof body === 'string') {
     // insert form data into the Comment table
-    await db.insert(Comment).values({ author, body });
+    await db.insert(Comment).values({ author,postID, body });
   }
 }
 
@@ -47,8 +48,11 @@ const comments = await db.select().from(Comment);
           <div class="comments-list">
             
             {
-                comments.map(({ author, body }) => (
-                  <CommentComponent author={author} body={body} />
+                comments.map(({ author,postID, body }) => (
+                    postID == frontmatter.id ? 
+                        <CommentComponent author={author} id={postID} body={body} />
+                    : console.log("no")
+                  
                 ))
               } 
           </div>
